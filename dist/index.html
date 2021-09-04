@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Library</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  </head>
+  <body>
+    <div id="header" class="container">
+      <h1 id="header-title">My Library</h1>
+    </div>
+    <div id="project-context" class="container dropdown">
+      <div class="project-context-display dropdown-display">
+        <p>About This Project</p>
+        <div>&#9660;</div>
+      </div>
+
+      <div class="project-content-dropdown invisible dropdown-content">
+        <p>
+          This project is inspired by
+          <a href="https://www.theodinproject.com/">The Odin Project</a>. This
+          project features <em>Object Manipulation</em>,
+          <em>Local Storage</em> and <em>Firebase</em>.
+        </p>
+        <p>
+          This application is written using only vanila HTML5, CSS3 and
+          Javascript. No frameworks are used.
+        </p>
+      </div>
+    </div>
+    <div id="project-manual" class="container dropdown">
+      <div class="project-manual-display dropdown-display">
+        <p>How To Use</p>
+        <div>&#9660;</div>
+      </div>
+
+      <div class="project-manual-dropdown invisible dropdown-content">
+        <p>
+          This app serves as a virtual library for you to keep track of the
+          books that you are reading.
+        </p>
+        <p>Press the '+' icon on the bottom right to add a new book.</p>
+        <p>Click on 'read' status to change the status of the book.</p>
+        <p>Delete button does exactly what you would expect it to.</p>
+        <p>
+          To save the changes you made to you library, login using your gmail
+          account.
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <table id="library">
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Pages</th>
+          <th>Status</th>
+          <th><button style="visibility: hidden">delete</button></th>
+        </tr>
+      </table>
+    </div>
+    <div id="add-book-popup" class="invisible">
+      <form>
+        <label for="add-title">
+          Title:
+          <input id="add-title" type="text" name="title" />
+        </label>
+        <label for="add-author">
+          Author:
+          <input id="add-author" type="text" name="author" />
+        </label>
+        <label for="add-pages">
+          Pages:
+          <input id="add-pages" type="number" name="pages" />
+        </label>
+        <label for="add-status">
+          Status:
+          <select name="add-status" id="add-status">
+            <option value="read">Read</option>
+            <option value="not-read">Not read</option>
+          </select>
+        </label>
+        <input id="add-submit" type="submit" value="Submit" />
+      </form>
+    </div>
+    <div id="add-book"></div>
+    <div id="sign-in-status"></div>
+    <div id="sign-in"></div>
+    <pre id="account-details"></pre>
+
+    <script src="main.js"></script>
+  </body>
+</html>
