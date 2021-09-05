@@ -67,8 +67,9 @@ caption {
 
 :root {
   --primary-color: rgb(80, 127, 255);
-  --main-green: rgb(27, 192, 27);
-  --hover-green: rgb(26, 175, 26);
+  --main-green: #264653;
+  --hover-green: #2a9d8f;
+  --error-color: #e76f51;
 }
 
 body {
@@ -104,10 +105,17 @@ button {
 }
 
 #header {
-  padding: 2.5rem 0 0.5rem 0;
+  padding: 1.5rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--main-green);
+  color: whitesmoke;
+  margin-bottom: 1.5rem;
+}
+
+#header-title {
+  margin-left: 3rem;
 }
 
 #logout-btn {
@@ -125,7 +133,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(204, 204, 204);
+  background-color: #e9c46a;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
   z-index: 2;
@@ -180,7 +188,7 @@ table#library {
   width: 3.5rem;
   height: 3.5rem;
   background-color: var(--main-green);
-  color: white;
+  color: whitesmoke;
   border-radius: 50%;
   text-align: center;
   cursor: pointer;
@@ -254,6 +262,13 @@ table#library {
   font-size: 1.1rem;
 }
 
+.title-error,
+.author-error {
+  color: var(--error-color);
+  margin-left: 1rem;
+  font-weight: bold;
+}
+
 /* Utilities */
 .container {
   max-width: 900px;
@@ -271,7 +286,7 @@ table#library {
 }
 
 .red-bg {
-  background-color: rgb(245, 84, 84);
+  background-color: var(--error-color);
   color: white;
 }
 
