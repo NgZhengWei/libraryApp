@@ -93,7 +93,7 @@ const Logic = (function () {
     }
     if (errorFlag) return;
     // if (hasEmptyFields(title, author, pages, status)) return;
-    Logic.addBookToLibrary(title, author, pages, status);
+    Logic.addBookToLibrary(title.value, author.value, pages, status);
 
     document.querySelector('#add-book-popup').classList.toggle('invisible'); // makes form go away after submission
     Interface.displayBooks(library); // repopulates booklist so new book is displayed
