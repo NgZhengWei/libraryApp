@@ -57,27 +57,42 @@ const Logic = (function () {
     if (pages === '') {
       emptyFields.push('pages');
     }
-
+    // if no errors were pushed into array
     if (emptyFields.length === 0) {
       return false;
-    } else {
-      alert(
-        'Book not added. Following fields not filled: ' + emptyFields.join(', ')
-      );
-      return true;
     }
+    alert(
+      `Book not added. Following fields not filled: ${emptyFields.join(', ')}`
+    );
+    return true;
   }
 
   function newBookFormInput(e) {
     // takes input from popup form for adding a new book
     e.preventDefault();
+    // clear previous error messages
+    document.querySelector('.title-error').innerText = '';
+    document.querySelector('.author-error').innerText = '';
     const form = document.querySelector('#add-book-popup > form');
-    const title = document.querySelector('#add-title').value;
-    const author = document.querySelector('#add-author').value;
+    const title = document.querySelector('#add-title');
+    const author = document.querySelector('#add-author');
     const pages = document.querySelector('#add-pages').value;
     const status = document.querySelector('#add-status').value === 'read';
 
-    if (hasEmptyFields(title, author, pages, status)) return;
+    // check if fields for author and title are empty, if so append error message into form
+    let errorFlag = false;
+    if (!title.checkValidity()) {
+      document.querySelector('.title-error').innerText =
+        title.validationMessage;
+      errorFlag = true;
+    }
+    if (!author.checkValidity()) {
+      document.querySelector('.author-error').innerText =
+        author.validationMessage;
+      errorFlag = true;
+    }
+    if (errorFlag) return;
+    // if (hasEmptyFields(title, author, pages, status)) return;
     Logic.addBookToLibrary(title, author, pages, status);
 
     document.querySelector('#add-book-popup').classList.toggle('invisible'); // makes form go away after submission
@@ -208,7 +223,7 @@ const Interface = (function () {
   }
 
   // event handler function for toggling visibility of add book popup
-  function togglePopupVisibility(e) {
+  function togglePopupVisibility() {
     const popup = document.querySelector('#add-book-popup');
     popup.classList.toggle('invisible');
   }
@@ -241,7 +256,7 @@ Storage.prototype.getObj = function (key) {
   // toggle dropdown for project context display
   document
     .querySelector('.project-context-display')
-    .addEventListener('click', (e) => {
+    .addEventListener('click', () => {
       document
         .querySelector('.project-content-dropdown')
         .classList.toggle('invisible');
@@ -249,7 +264,7 @@ Storage.prototype.getObj = function (key) {
   // toggle dropdown for project manual
   document
     .querySelector('.project-manual-display')
-    .addEventListener('click', (e) => {
+    .addEventListener('click', () => {
       document
         .querySelector('.project-manual-dropdown')
         .classList.toggle('invisible');
